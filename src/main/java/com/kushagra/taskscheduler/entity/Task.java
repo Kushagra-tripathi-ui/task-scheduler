@@ -23,6 +23,9 @@ public class Task {
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
+    private LocalDateTime scheduledAt;
+    private int retryCount = 0;
+    private int maxRetries = 3;
 
     private LocalDateTime updatedAt;
 
@@ -55,5 +58,12 @@ public class Task {
     public void setStatus(TaskStatus status) { this.status = status; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
+    public LocalDateTime getScheduledAt() { return scheduledAt; }
+    public void setScheduledAt(LocalDateTime scheduledAt) { this.scheduledAt = scheduledAt; }
     public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public int getRetryCount() { return retryCount; }
+    public void setRetryCount(int retryCount) { this.retryCount = retryCount; }
+
+    public int getMaxRetries() { return maxRetries; }
+    public void setMaxRetries(int maxRetries) { this.maxRetries = maxRetries; }
 }

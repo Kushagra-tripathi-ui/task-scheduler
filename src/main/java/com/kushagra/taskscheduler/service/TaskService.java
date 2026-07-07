@@ -19,10 +19,11 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public TaskResponse createTask(TaskRequest request) {
+   public TaskResponse createTask(TaskRequest request) {
         Task task = new Task();
         task.setTitle(request.getTitle());
         task.setDescription(request.getDescription());
+        task.setScheduledAt(request.getScheduledAt());
         Task saved = taskRepository.save(task);
         return new TaskResponse(saved);
     }

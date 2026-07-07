@@ -7,6 +7,7 @@ C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskschedul
 C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\exception\GlobalExceptionHandler.java
 C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\exception\TaskNotFoundException.java
 C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\repository\TaskRepository.java
+C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\service\TaskSchedulerService.java
 C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\service\TaskService.java
 C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\service\TaskWorkerService.java
 C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\TaskSchedulerApplication.java
