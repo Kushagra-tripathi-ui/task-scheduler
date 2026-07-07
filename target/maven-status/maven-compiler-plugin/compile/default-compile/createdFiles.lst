@@ -1,1 +1,10 @@
+com\kushagra\taskscheduler\dto\TaskResponse.class
+com\kushagra\taskscheduler\repository\TaskRepository.class
+com\kushagra\taskscheduler\exception\TaskNotFoundException.class
+com\kushagra\taskscheduler\entity\Task.class
+com\kushagra\taskscheduler\controller\TaskController.class
+com\kushagra\taskscheduler\exception\GlobalExceptionHandler.class
 com\kushagra\taskscheduler\TaskSchedulerApplication.class
+com\kushagra\taskscheduler\entity\TaskStatus.class
+com\kushagra\taskscheduler\dto\TaskRequest.class
+com\kushagra\taskscheduler\service\TaskService.class
