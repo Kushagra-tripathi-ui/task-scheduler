@@ -3,6 +3,7 @@ package com.kushagra.taskscheduler.controller;
 import com.kushagra.taskscheduler.dto.TaskRequest;
 import com.kushagra.taskscheduler.dto.TaskResponse;
 import com.kushagra.taskscheduler.service.TaskService;
+import com.kushagra.taskscheduler.service.TaskWorkerService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +16,11 @@ import java.util.List;
 public class TaskController {
 
     private final TaskService taskService;
+    private final TaskWorkerService taskWorkerService;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, TaskWorkerService taskWorkerService) {
         this.taskService = taskService;
+        this.taskWorkerService = taskWorkerService;
     }
 
     @PostMapping
@@ -45,5 +48,11 @@ public class TaskController {
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{id}/execute")
+    public ResponseEntity<String> executeTask(@PathVariable Long id) {
+        taskWorkerService.executeTask(id);
+        return ResponseEntity.accepted().body("Task execution started for id: " + id);
     }
 }
