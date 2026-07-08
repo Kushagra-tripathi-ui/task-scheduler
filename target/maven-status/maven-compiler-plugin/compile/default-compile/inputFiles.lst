@@ -1,4 +1,5 @@
 C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\config\AsyncConfig.java
+C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\config\KafkaConsumerConfig.java
 C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\config\RedisConfig.java
 C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\controller\TaskController.java
 C:\Users\Kushagra Tripathi\task-scheduler\src\main\java\com\kushagra\taskscheduler\dto\TaskEvent.java

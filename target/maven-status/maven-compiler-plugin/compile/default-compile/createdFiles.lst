@@ -14,4 +14,5 @@ com\kushagra\taskscheduler\exception\GlobalExceptionHandler.class
 com\kushagra\taskscheduler\service\TaskWorkerService.class
 com\kushagra\taskscheduler\entity\TaskStatus.class
 com\kushagra\taskscheduler\config\AsyncConfig.class
+com\kushagra\taskscheduler\config\KafkaConsumerConfig.class
 com\kushagra\taskscheduler\service\TaskService.class

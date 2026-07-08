@@ -23,4 +23,10 @@ public class TaskEventProducer {
         logger.info("Publishing event for task {} to topic {}", taskId, TOPIC);
         kafkaTemplate.send(TOPIC, taskId.toString(), event);
     }
+
+    public void publishConsumerCrashTest(Long taskId) {
+        TaskEvent event = new TaskEvent(taskId, "CONSUMER_CRASH");
+        logger.info("Publishing CONSUMER_CRASH test event for task {}", taskId);
+        kafkaTemplate.send(TOPIC, taskId.toString(), event);
+    }
 }

@@ -21,6 +21,10 @@ public class TaskEventConsumer {
     public void consumeTaskEvent(TaskEvent event) {
         logger.info("Consumed event: taskId={}, eventType={}", event.getTaskId(), event.getEventType());
 
+        if ("CONSUMER_CRASH".equals(event.getEventType())) {
+            throw new RuntimeException("Simulated consumer failure for taskId " + event.getTaskId());
+        }
+
         if ("TASK_READY".equals(event.getEventType())) {
             taskWorkerService.executeTask(event.getTaskId());
         }

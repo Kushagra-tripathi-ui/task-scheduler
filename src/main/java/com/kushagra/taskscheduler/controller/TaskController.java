@@ -1,5 +1,5 @@
 package com.kushagra.taskscheduler.controller;
-
+import com.kushagra.taskscheduler.service.TaskEventProducer;
 import com.kushagra.taskscheduler.dto.TaskRequest;
 import com.kushagra.taskscheduler.dto.TaskResponse;
 import com.kushagra.taskscheduler.service.TaskService;
@@ -17,10 +17,17 @@ public class TaskController {
 
     private final TaskService taskService;
     private final TaskWorkerService taskWorkerService;
+    private final TaskEventProducer taskEventProducer;
 
-    public TaskController(TaskService taskService, TaskWorkerService taskWorkerService) {
+    public TaskController(TaskService taskService, TaskWorkerService taskWorkerService, TaskEventProducer taskEventProducer) {
         this.taskService = taskService;
         this.taskWorkerService = taskWorkerService;
+        this.taskEventProducer = taskEventProducer;
+    }
+    @PostMapping("/{id}/simulate-consumer-crash")
+    public ResponseEntity<String> simulateConsumerCrash(@PathVariable Long id) {
+        taskEventProducer.publishConsumerCrashTest(id);
+        return ResponseEntity.accepted().body("Consumer crash test event published for id: " + id);
     }
 
     @PostMapping
