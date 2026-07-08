@@ -1,4 +1,23 @@
 services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus-scheduler
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+      - app
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana-scheduler
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin123
+    depends_on:
+      - prometheus
   nginx:
     image: nginx:latest
     container_name: nginx-scheduler
