@@ -2,11 +2,14 @@ com\kushagra\taskscheduler\dto\TaskResponse.class
 com\kushagra\taskscheduler\exception\TaskNotFoundException.class
 com\kushagra\taskscheduler\service\TaskSchedulerService.class
 com\kushagra\taskscheduler\controller\TaskController.class
+com\kushagra\taskscheduler\service\TaskEventProducer.class
 com\kushagra\taskscheduler\config\RedisConfig.class
+com\kushagra\taskscheduler\dto\TaskEvent.class
 com\kushagra\taskscheduler\TaskSchedulerApplication.class
 com\kushagra\taskscheduler\dto\TaskRequest.class
 com\kushagra\taskscheduler\repository\TaskRepository.class
 com\kushagra\taskscheduler\entity\Task.class
+com\kushagra\taskscheduler\service\TaskEventConsumer.class
 com\kushagra\taskscheduler\exception\GlobalExceptionHandler.class
 com\kushagra\taskscheduler\service\TaskWorkerService.class
 com\kushagra\taskscheduler\entity\TaskStatus.class

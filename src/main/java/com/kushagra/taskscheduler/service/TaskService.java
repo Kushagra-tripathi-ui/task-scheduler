@@ -20,17 +20,24 @@ public class TaskService {
     private static final Logger logger = LoggerFactory.getLogger(TaskService.class);
 
     private final TaskRepository taskRepository;
+    private final TaskEventProducer taskEventProducer;
 
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(TaskRepository taskRepository, TaskEventProducer taskEventProducer) {
         this.taskRepository = taskRepository;
+        this.taskEventProducer = taskEventProducer;
     }
 
-    public TaskResponse createTask(TaskRequest request) {
+   public TaskResponse createTask(TaskRequest request) {
         Task task = new Task();
         task.setTitle(request.getTitle());
         task.setDescription(request.getDescription());
         task.setScheduledAt(request.getScheduledAt());
         Task saved = taskRepository.save(task);
+
+        if (saved.getScheduledAt() == null) {
+            taskEventProducer.publishTaskReady(saved.getId());
+        }
+
         return new TaskResponse(saved);
     }
 
