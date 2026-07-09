@@ -1,0 +1,15 @@
+filebeat.inputs:
+  - type: container
+    paths:
+      - '/var/lib/docker/containers/*/*.log'
+
+processors:
+  - add_docker_metadata:
+      host: "unix:///var/run/docker.sock"
+
+output.elasticsearch:
+  hosts: ["http://elasticsearch:9200"]
+  index: "task-scheduler-logs-%{+yyyy.MM.dd}"
+
+setup.template.name: "task-scheduler-logs"
+setup.template.pattern: "task-scheduler-logs-*"
