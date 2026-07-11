@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-scheduler-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: task-scheduler-app
+  template:
+    metadata:
+      labels:
+        app: task-scheduler-app
+    spec:
+      containers:
+        - name: task-scheduler-app
+          image: kushagratripathi/task-scheduler-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres-service:5432/task_scheduler_db
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: kushagra123
+            - name: SPRING_DATA_REDIS_HOST
+              value: redis-service
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: kafka-service:9094
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            failureThreshold: 30
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            periodSeconds: 5
